@@ -48,14 +48,11 @@ else
 fi
 
 # Set FG_WEBUI_PASSWD
-if [[ -z "${FG_WEBUI_PASSWD}" ]]; then
-  echo "[Init] Using default FG_WEBUI_PASSWD: f1exgetp@ss"
-  FG_WEBUI_PASSWD="f1exgetp@ss"
-else
+if [ -n "${FG_WEBUI_PASSWD}" ]; then
   echo "[Init] Using userdefined FG_WEBUI_PASSWD:" \
   "${FG_WEBUI_PASSWD}"
+  flexget web passwd "${FG_WEBUI_PASSWD}"
 fi
-flexget web passwd "${FG_WEBUI_PASSWD}"
 
 echo "[Init] Starting flexget daemon"
 if [ -n "$flex_user" ]; then
@@ -64,4 +61,3 @@ if [ -n "$flex_user" ]; then
 else
   exec flexget -c /config/config.yml --loglevel info daemon start
 fi
-
