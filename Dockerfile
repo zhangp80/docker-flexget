@@ -1,7 +1,7 @@
 FROM alpine:3.7
 MAINTAINER zpkx@qq.com
 
-ENV TZ=Asia/Shanghai
+#ENV TZ=Asia/Shanghai
 
 # install frolvlad/alpine-python3
 RUN apk add --no-cache python3 && \
